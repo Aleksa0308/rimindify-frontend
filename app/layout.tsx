@@ -23,9 +23,6 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <section>
-                        <ThemeModeToggle />
-                    </section>
                     {children}
                 </ThemeProvider>
             </body>

@@ -1,3 +1,5 @@
+import { ThemeModeToggle } from '@/components/theme-mode-toggle'
+
 export default function HomeLayout({
     children,
 }: {
@@ -5,7 +7,9 @@ export default function HomeLayout({
 }) {
     return (
         <div>
-            <nav>Nav Home</nav>
+            <nav>
+                <ThemeModeToggle />
+            </nav>
             {children}
         </div>
     )
