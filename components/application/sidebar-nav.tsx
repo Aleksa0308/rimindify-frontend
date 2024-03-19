@@ -1,5 +1,5 @@
 'use client'
-import { NavItem } from '@/types/application/sidebar-nav'
+import { NavItem } from '@/types/application/sidebar-nav.dto'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
