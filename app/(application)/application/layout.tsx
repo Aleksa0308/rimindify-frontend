@@ -1,5 +1,5 @@
 'use client'
-import { NavItem } from '@/types/application/sidebar-nav'
+import { NavItem } from '@/types/application/sidebar-nav.dto'
 import { Calendar, Mails, User, Users, UserPlus } from 'lucide-react'
 import { SidebarNav } from '@/components/application/sidebar-nav'
 import Link from 'next/link'
@@ -12,14 +12,14 @@ const actionLinks: NavItem[] = [
         icon: Calendar,
     },
     {
-        title: 'Client Groups',
-        href: '/application/client-groups',
-        icon: Users,
-    },
-    {
         title: 'Clients',
         href: '/application/clients',
         icon: UserPlus,
+    },
+    {
+        title: 'Client Groups',
+        href: '/application/client-groups',
+        icon: Users,
     },
     {
         title: 'Messages',
