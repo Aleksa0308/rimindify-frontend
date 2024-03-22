@@ -5,7 +5,7 @@ import { buttonVariants } from '@/components/ui/button'
 
 import { cn } from '@/lib/utils'
 
-import { UserLoginForm } from '@/components/auth/user-login-form'
+import { UserLoginForm } from '@/app/(auth)/login/user-login-form'
 import { Icons } from '@/components/icons'
 
 export const metadata: Metadata = {
