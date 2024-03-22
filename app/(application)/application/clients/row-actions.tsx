@@ -39,13 +39,14 @@ export function RowActions({ row }: RowActionsProps) {
                     dialogOnChange={setOpen}
                 />
 
-                <DropdownMenuItem
-                    className="flex gap-1 items-center text-destructive"
+                <Button
+                    variant={'ghost'}
+                    className="w-full flex gap-1 p-2 h-fit items-center justify-start text-destructive"
                     onClick={() => handleDeleteClient()}
                 >
                     <Trash2 className="h-4 w-4" />
                     Delete
-                </DropdownMenuItem>
+                </Button>
             </DropdownMenuContent>
         </DropdownMenu>
     )
