@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { toast } from 'sonner'
+import Cookies from 'js-cookie'
 
 const useAxios = axios.create({
     baseURL: 'http://localhost:3333',
@@ -11,11 +12,11 @@ const useAxios = axios.create({
 useAxios.interceptors.request.use(
     (config) => {
         // Modify the request config here (add headers, authentication tokens)
-        const accessToken = 'aaaa'
-
+        const accessToken = Cookies.get('token') ?? null
         // If token is present add it to request's Authorization Header
         if (accessToken) {
-            if (config.headers) config.headers.Authorization = accessToken
+            if (config.headers)
+                config.headers.Authorization = `Bearer ${accessToken}`
         }
         return config
     },

@@ -1,14 +1,15 @@
 'use client'
-import { NavItem } from '@/types/application/sidebar-nav.dto'
+import { NavItem } from '@/lib/types/application/sidebar-nav'
 import { Calendar, Mails, User, Users, UserPlus } from 'lucide-react'
 import { SidebarNav } from '@/components/application/sidebar-nav'
 import Link from 'next/link'
 import { Icons } from '@/components/icons'
 import { Separator } from '@/components/ui/separator'
+import { PageTitle } from '@/components/application/page-title'
 const actionLinks: NavItem[] = [
     {
         title: 'Schedule',
-        href: '/application',
+        href: '/application/schedule',
         icon: Calendar,
     },
     {
@@ -42,7 +43,7 @@ export default function ApplicationLayout({
     children: React.ReactNode
 }) {
     return (
-        <div className={'flex'}>
+        <div className={'flex h-screen'}>
             <section className={'border-r'}>
                 <div className={'mt-4 px-4'}>
                     <Link
@@ -58,7 +59,10 @@ export default function ApplicationLayout({
                 <Separator className={'my-4'} />
                 <SidebarNav navLinks={profileLinks} />
             </section>
-            {children}
+            <section className="flex flex-col w-screen">
+                <PageTitle />
+                <section className="container">{children}</section>
+            </section>
         </div>
     )
 }
