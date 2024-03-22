@@ -30,20 +30,24 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from '@/components/ui/popover'
-import { CalendarIcon } from 'lucide-react'
+import { CalendarIcon, Pencil } from 'lucide-react'
 import { Calendar } from '@/components/ui/calendar'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { useCreateClientMutation } from '@/lib/hooks/mutations/use-create-client-mutation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useClient } from '@/lib/hooks/queries/use-client'
+import { useEditClientMutation } from '@/lib/hooks/mutations/use-edit-client-mutation'
 
 interface CreateClientForm extends React.HTMLAttributes<HTMLDivElement> {
     open: boolean
     dialogOnChange: (open: boolean) => void
+    clientId: number
 }
 export function EditClientForm({
     className,
     open,
     dialogOnChange,
+    clientId,
 }: CreateClientForm) {
     const form = useForm<z.infer<typeof clientSchema>>({
         resolver: zodResolver(clientSchema),
@@ -56,32 +60,48 @@ export function EditClientForm({
         },
         mode: 'onBlur',
     })
+    const client = useClient(clientId)
+    const mutation = useEditClientMutation(dialogOnChange, clientId)
 
-    const mutation = useCreateClientMutation(dialogOnChange)
+    useEffect(() => {
+        if (client.isSuccess && client.data) {
+            setFormValues()
+        }
+    }, [client.isSuccess, client.data])
 
-    async function onSubmit(values: z.infer<typeof clientSchema>) {
-        mutation.mutate(values)
+    const setFormValues = () => {
+        form.setValue('firstName', client.data?.firstName!)
+        form.setValue('lastName', client.data?.lastName!)
+        form.setValue('nickName', client.data?.nickName!)
+        form.setValue('phone', client.data?.phone!)
+        form.setValue('appointment', new Date(client.data?.appointment!))
     }
+
     const handleDialogClick = () => {
         dialogOnChange(!open)
     }
+    async function onSubmit(values: z.infer<typeof clientSchema>) {
+        mutation.mutate(values)
+    }
+
     return (
         <div className={cn(className)}>
             <Dialog open={open} onOpenChange={() => dialogOnChange(!open)}>
                 <DialogTrigger asChild>
                     <Button
-                        variant="default"
+                        variant="ghost"
+                        className="w-full h-fit flex p-2 gap-1 items-center justify-start"
                         onClick={handleDialogClick}
-                        className="w-fit"
                     >
-                        Add Client +
+                        <Pencil className="h-4 w-4" />
+                        Edit
                     </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[560px]">
                     <DialogHeader>
-                        <DialogTitle>Add client</DialogTitle>
+                        <DialogTitle>Edit Client</DialogTitle>
                         <DialogDescription>
-                            Create a client that you can manage later.
+                            Edit client information that you can manage later.
                         </DialogDescription>
                     </DialogHeader>
                     <Form {...form}>
@@ -102,9 +122,9 @@ export function EditClientForm({
                                                     type="text"
                                                     autoCapitalize="none"
                                                     autoCorrect="off"
-                                                    disabled={
-                                                        mutation.isPending
-                                                    }
+                                                    // disabled={
+                                                    //     mutation.isPending
+                                                    // }
                                                     {...field}
                                                 />
                                             </FormControl>
@@ -128,9 +148,9 @@ export function EditClientForm({
                                                     type="text"
                                                     autoCapitalize="none"
                                                     autoCorrect="off"
-                                                    disabled={
-                                                        mutation.isPending
-                                                    }
+                                                    // disabled={
+                                                    //     mutation.isPending
+                                                    // }
                                                     {...field}
                                                 />
                                             </FormControl>
@@ -154,9 +174,9 @@ export function EditClientForm({
                                                     type="text"
                                                     autoCapitalize="none"
                                                     autoCorrect="off"
-                                                    disabled={
-                                                        mutation.isPending
-                                                    }
+                                                    // disabled={
+                                                    //     // mutation.isPending
+                                                    // }
                                                     {...field}
                                                 />
                                             </FormControl>
@@ -180,9 +200,9 @@ export function EditClientForm({
                                                     type="text"
                                                     autoCapitalize="none"
                                                     autoCorrect="off"
-                                                    disabled={
-                                                        mutation.isPending
-                                                    }
+                                                    // disabled={
+                                                    //     // mutation.isPending
+                                                    // }
                                                     {...field}
                                                 />
                                             </FormControl>
@@ -261,9 +281,9 @@ export function EditClientForm({
                             <DialogFooter>
                                 <Button
                                     type="submit"
-                                    disabled={mutation.isPending}
+                                    // disabled={mutation.isPending}
                                 >
-                                    Create
+                                    Edit
                                 </Button>
                             </DialogFooter>
                         </form>

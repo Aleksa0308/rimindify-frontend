@@ -9,6 +9,9 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
 import { MoreHorizontal, Pencil, Trash2 } from 'lucide-react'
+import { EditClientForm } from '@/app/(application)/application/clients/edit-client-form'
+import { useState } from 'react'
+import { RowActions } from '@/app/(application)/application/clients/row-actions'
 
 export const clientColumns: ColumnDef<ClientDto>[] = [
     {
@@ -38,43 +41,7 @@ export const clientColumns: ColumnDef<ClientDto>[] = [
         enableHiding: false,
         cell: ({ row }) => {
             const client = row.original
-
-            return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
-                            <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem
-                            className="flex gap-1 items-center"
-                            onClick={() =>
-                                navigator.clipboard.writeText(
-                                    String(client.clientId)
-                                )
-                            }
-                        >
-                            <Pencil className="h-4 w-4" />
-                            Edit
-                        </DropdownMenuItem>
-
-                        <DropdownMenuItem
-                            className="flex gap-1 items-center text-destructive"
-                            onClick={() =>
-                                navigator.clipboard.writeText(
-                                    String(client.clientId)
-                                )
-                            }
-                        >
-                            <Trash2 className="h-4 w-4" />
-                            Delete
-                        </DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            )
+            return <RowActions row={row} />
         },
     },
 ]

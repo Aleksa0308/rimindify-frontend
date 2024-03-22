@@ -6,6 +6,7 @@ export function useClient(clientId: number) {
     return useQuery<ClientDto, Error>({
         queryKey: ['client', clientId],
         queryFn: () => getClients(clientId),
+        enabled: !!clientId,
     })
 }
 async function getClients(clientId: number) {
