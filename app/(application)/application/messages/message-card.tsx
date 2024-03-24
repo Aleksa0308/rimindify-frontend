@@ -4,15 +4,19 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card'
-import { ScrollArea } from '@/components/ui/scroll-area'
-
-export function MessageCard() {
+interface MessageCardProps {
+    message: MessageDto
+}
+export function MessageCard({ message }: MessageCardProps) {
+    const formatMessageLength = (content: string) => {
+        return content.length > 100 ? `${content.slice(0, 100)}...` : content
+    }
     return (
-        <Card className="w-full">
+        <Card className="w-full bg-transparent border-none">
             <CardHeader>
-                <CardTitle>Podsetnik</CardTitle>
+                <CardTitle>{message.title}</CardTitle>
                 <CardDescription>
-                    Uskoro Vam istice Registracija!
+                    {formatMessageLength(message.content)}
                 </CardDescription>
             </CardHeader>
         </Card>
