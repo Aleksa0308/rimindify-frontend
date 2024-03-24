@@ -10,7 +10,7 @@ export default function Clients() {
     const clients = useClients()
     const [dialogOpen, setDialogOpen] = useState(false)
     return (
-        <main className="flex flex-col gap-2">
+        <main className="flex flex-col gap-2 container mt-4">
             <CreateClientForm
                 className="self-end"
                 open={dialogOpen}

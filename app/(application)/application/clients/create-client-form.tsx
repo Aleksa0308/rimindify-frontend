@@ -60,6 +60,7 @@ export function CreateClientForm({
 
     async function onSubmit(values: z.infer<typeof clientSchema>) {
         mutation.mutate(values)
+        form.reset()
     }
     const handleDialogClick = () => {
         dialogOnChange(!open)
