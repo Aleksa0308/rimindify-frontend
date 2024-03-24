@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Icons } from '@/components/icons'
 import { Separator } from '@/components/ui/separator'
 import { PageTitle } from '@/components/application/page-title'
+import { ScrollArea } from '@/components/ui/scroll-area'
 const actionLinks: NavItem[] = [
     {
         title: 'Schedule',
@@ -44,7 +45,11 @@ export default function ApplicationLayout({
 }) {
     return (
         <div className={'flex h-screen'}>
-            <section className={'border-r'}>
+            <section
+                className={
+                    'border-r w-[200px] fixed top-0 left-0 h-full overflow-y-auto'
+                }
+            >
                 <div className={'mt-4 px-4'}>
                     <Link
                         href="/"
@@ -59,9 +64,15 @@ export default function ApplicationLayout({
                 <Separator className={'my-4'} />
                 <SidebarNav navLinks={profileLinks} />
             </section>
-            <section className="flex flex-col w-screen">
-                <PageTitle />
-                <section className="container">{children}</section>
+            <section className="flex-1 pt-16 ml-[200px] h-screen overflow-y-auto">
+                <div className="fixed bg-background top-0 right-0 left-[200px] w-full z-10">
+                    <PageTitle />
+                </div>
+                <div>
+                    <section className="">
+                        <ScrollArea>{children}</ScrollArea>
+                    </section>
+                </div>
             </section>
         </div>
     )
