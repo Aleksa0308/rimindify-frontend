@@ -1,8 +1,8 @@
 'use client'
 import { CreateClientForm } from '@/app/(application)/application/clients/create-client-form'
 import { useClients } from '@/lib/hooks/queries/use-clients'
-import { DataTable } from '@/app/(application)/application/data-table'
-import { clientColumns } from '@/app/(application)/application/clients/client-columns'
+import { DataTable } from '@/app/(application)/application/clients/data-table'
+import { columns } from '@/app/(application)/application/clients/columns'
 import { ClientDto } from '@/lib/types/application/clients/client.dto'
 import { useState } from 'react'
 
@@ -17,7 +17,7 @@ export default function Clients() {
                 dialogOnChange={setDialogOpen}
             />
             <DataTable
-                columns={clientColumns}
+                columns={columns}
                 data={clients.isSuccess ? clients.data : []}
             />
         </main>

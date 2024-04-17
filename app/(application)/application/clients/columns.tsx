@@ -8,12 +8,12 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
-import { MoreHorizontal, Pencil, Trash2 } from 'lucide-react'
+import { ArrowUpDown, MoreHorizontal, Pencil, Trash2 } from 'lucide-react'
 import { EditClientForm } from '@/app/(application)/application/clients/edit-client-form'
 import { useState } from 'react'
 import { RowActions } from '@/app/(application)/application/clients/row-actions'
 
-export const clientColumns: ColumnDef<ClientDto>[] = [
+export const columns: ColumnDef<ClientDto>[] = [
     {
         accessorKey: 'firstName',
         header: 'First Name',
@@ -32,7 +32,19 @@ export const clientColumns: ColumnDef<ClientDto>[] = [
     },
     {
         accessorKey: 'appointment',
-        header: 'Appointment',
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() =>
+                        column.toggleSorting(column.getIsSorted() === 'asc')
+                    }
+                >
+                    Appointment
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            )
+        },
         cell: ({ row }) =>
             new Date(row.getValue('appointment')).toLocaleDateString(),
     },

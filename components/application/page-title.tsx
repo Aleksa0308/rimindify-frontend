@@ -17,7 +17,11 @@ export function PageTitle() {
 
     return (
         <div>
-            <div className={'mt-5 px-4 font-medium text-lg'}>
+            <div
+                className={
+                    'mt-5 h-full font-medium text-lg align-middle container'
+                }
+            >
                 {formattedPathname(pathname)}
             </div>
             <Separator className={'mt-4'} />
