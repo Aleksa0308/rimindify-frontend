@@ -24,7 +24,7 @@ export function PageTitle() {
         <>
             <div
                 className={
-                    'px-6 mt-2 font-medium text-lg flex justify-between items-center'
+                    'px-6 h-full font-medium text-lg flex justify-between items-center'
                 }
             >
                 {formattedPathname(pathname)}
@@ -39,7 +39,7 @@ export function PageTitle() {
                     <ThemeModeToggle />
                 </div>
             </div>
-            <Separator className={'mt-4'} />
+            <Separator className={''} />
         </>
     )
 }

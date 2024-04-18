@@ -77,7 +77,7 @@ export default function ApplicationLayout({
                 <SidebarNav navLinks={profileLinks} />
             </section>
             <section className="flex-1 pt-16 pl-[200px] h-screen overflow-y-auto">
-                <div className="fixed bg-background top-0 pr-[200px] w-full z-10">
+                <div className="fixed h-16 bg-background top-0 pr-[200px] w-full z-10">
                     <PageTitle />
                 </div>
                 <div>
