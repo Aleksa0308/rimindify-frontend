@@ -27,7 +27,7 @@ export default function Messages() {
 
     return (
         <main className="grid grid-cols-2 w-full">
-            <div className="flex flex-col border-r w-full h-[calc(100vh-65px)]">
+            <div className="flex flex-col border-r w-full h-[calc(100vh-80px)]">
                 <CreateMessageForm
                     className="self-end px-6 my-4"
                     open={dialogOpen}

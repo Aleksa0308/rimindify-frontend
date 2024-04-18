@@ -1,6 +1,13 @@
 'use client'
 import { NavItem } from '@/lib/types/application/sidebar-nav'
-import { Calendar, Mails, User, Users, UserPlus } from 'lucide-react'
+import {
+    Calendar,
+    Mails,
+    User,
+    Users,
+    UserPlus,
+    LayoutDashboard,
+} from 'lucide-react'
 import { SidebarNav } from '@/components/application/sidebar-nav'
 import Link from 'next/link'
 import { Icons } from '@/components/icons'
@@ -8,6 +15,11 @@ import { Separator } from '@/components/ui/separator'
 import { PageTitle } from '@/components/application/page-title'
 import { ScrollArea } from '@/components/ui/scroll-area'
 const actionLinks: NavItem[] = [
+    {
+        title: 'Dashboard',
+        href: '/application/dashboard',
+        icon: LayoutDashboard,
+    },
     {
         title: 'Schedule',
         href: '/application/schedule',
@@ -64,8 +76,8 @@ export default function ApplicationLayout({
                 <Separator className={'my-4'} />
                 <SidebarNav navLinks={profileLinks} />
             </section>
-            <section className="flex-1 pt-16 ml-[200px] h-screen overflow-y-auto">
-                <div className="fixed bg-background top-0 right-0 left-[200px] w-full z-10">
+            <section className="flex-1 pt-16 pl-[200px] h-screen overflow-y-auto">
+                <div className="fixed bg-background top-0 pr-[200px] w-full z-10">
                     <PageTitle />
                 </div>
                 <div>
