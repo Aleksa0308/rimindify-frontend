@@ -1,12 +1,5 @@
 import { ColumnDef } from '@tanstack/table-core'
 import { ClientDto } from '@/lib/types/application/clients/client.dto'
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
 import { ArrowUpDown, MoreHorizontal, Pencil, Trash2 } from 'lucide-react'
 import { EditClientForm } from '@/app/(application)/application/clients/edit-client-form'

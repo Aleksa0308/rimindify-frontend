@@ -8,7 +8,6 @@ export default function ClientGroups() {
     return (
         <main className="flex flex-col mt-4 gap-2 container">
             <Button className="self-end">Create a Group +</Button>
-            {/* Grid of client group cards*/}
             <section className="grid grid-cols-3 gap-2">
                 {clientGroups.isSuccess &&
                     clientGroups.data.map((clientGroup) => (
