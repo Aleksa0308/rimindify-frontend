@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { messageSchema } from '@/lib/validation/schemas/message-schema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useCreateMessageMutation } from '@/lib/hooks/mutations/use-create-message'
+import { useCreateMessageMutation } from '@/lib/hooks/messages/use-create-message'
 import { cn } from '@/lib/utils'
 import {
     Dialog,

@@ -11,7 +11,7 @@ import { MoreHorizontal, Trash2 } from 'lucide-react'
 import { EditClientForm } from '@/app/(application)/application/clients/edit-client-form'
 import { ClientDto } from '@/lib/types/application/clients/client.dto'
 import { Row } from '@tanstack/table-core'
-import { useDeleteClientMutation } from '@/lib/hooks/mutations/use-delete-client-mutation'
+import { useDeleteClientMutation } from '@/lib/hooks/clients/use-delete-client-mutation'
 interface RowActionsProps {
     row: Row<ClientDto>
 }

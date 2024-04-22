@@ -19,11 +19,11 @@ import {
 import { Button } from '@/components/ui/button'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import { useEditMessageMutation } from '@/lib/hooks/mutations/use-edit-message-mutation'
+import { useEditMessageMutation } from '@/lib/hooks/messages/use-edit-message-mutation'
 import { toast } from 'sonner'
 import { ActionConfirmationDialog } from '@/app/(application)/application/action-confirmation-dialog'
 import { Trash2 } from 'lucide-react'
-import { useDeleteMessageMutation } from '@/lib/hooks/mutations/use-delete-message'
+import { useDeleteMessageMutation } from '@/lib/hooks/messages/use-delete-message'
 
 interface MessageDisplayProps {
     message: MessageDto

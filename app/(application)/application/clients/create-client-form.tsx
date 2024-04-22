@@ -33,7 +33,7 @@ import {
 import { CalendarIcon } from 'lucide-react'
 import { Calendar } from '@/components/ui/calendar'
 import { PopoverClose } from '@radix-ui/react-popover'
-import { useCreateClientMutation } from '@/lib/hooks/mutations/use-create-client-mutation'
+import { useCreateClientMutation } from '@/lib/hooks/clients/use-create-client-mutation'
 import { useState } from 'react'
 
 interface CreateClientForm extends React.HTMLAttributes<HTMLDivElement> {

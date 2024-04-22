@@ -3,7 +3,7 @@ import { Separator } from '@/components/ui/separator'
 import { ThemeModeToggle } from '@/components/theme-mode-toggle'
 import { Button } from '@/components/ui/button'
 import { LogOutIcon } from 'lucide-react'
-import { useLogout } from '@/lib/hooks/use-logut'
+import { useLogout } from '@/lib/hooks/auth/use-logout'
 
 export function PageTitle() {
     const logout = useLogout()

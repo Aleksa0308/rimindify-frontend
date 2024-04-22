@@ -1,6 +1,6 @@
 'use client'
 import { CreateClientForm } from '@/app/(application)/application/clients/create-client-form'
-import { useClients } from '@/lib/hooks/queries/use-clients'
+import { useClients } from '@/lib/hooks/clients/use-clients'
 import { DataTable } from '@/app/(application)/application/clients/data-table'
 import { columns } from '@/app/(application)/application/clients/columns'
 import { ClientDto } from '@/lib/types/application/clients/client.dto'
