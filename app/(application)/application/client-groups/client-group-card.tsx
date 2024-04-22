@@ -7,13 +7,19 @@ import {
     CardTitle,
 } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { ClientGroupDto } from '@/lib/types/application/client-groups/client-groups.dto'
 
-export function ClientGroupCard() {
+interface ClientGroupCardProps {
+    clientGroup: ClientGroupDto
+}
+export function ClientGroupCard({ clientGroup }: ClientGroupCardProps) {
     return (
         <Card className=" bg-transparent">
             <CardHeader>
-                <CardTitle>Group name</CardTitle>
-                <CardDescription>Description</CardDescription>
+                <CardTitle>{clientGroup.name}</CardTitle>
+                <CardDescription>
+                    {clientGroup.description ? clientGroup.description : null}
+                </CardDescription>
             </CardHeader>
             <CardContent></CardContent>
             <CardFooter className="flex justify-end">

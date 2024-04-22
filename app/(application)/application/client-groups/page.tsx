@@ -10,9 +10,13 @@ export default function ClientGroups() {
             <Button className="self-end">Create a Group +</Button>
             {/* Grid of client group cards*/}
             <section className="grid grid-cols-3 gap-2">
-                <ClientGroupCard />
-                {/*<ClientGroupCard />*/}
-                {/*<ClientGroupCard />*/}
+                {clientGroups.isSuccess &&
+                    clientGroups.data.map((clientGroup) => (
+                        <ClientGroupCard
+                            key={clientGroup.clientGroupId}
+                            clientGroup={clientGroup}
+                        />
+                    ))}
             </section>
         </main>
     )
