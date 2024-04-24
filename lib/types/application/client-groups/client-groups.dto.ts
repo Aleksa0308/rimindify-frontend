@@ -7,7 +7,11 @@ export interface ClientGroupDto {
 }
 
 export interface ClientGroupWithClientsDto extends ClientGroupDto {
-    clients: ClientDto[]
+    clients: ClientsWithGroupId[]
+}
+
+export interface ClientsWithGroupId extends ClientDto {
+    clientGroupId: number
 }
 
 export interface CreateClientGroupDto {

@@ -1,14 +1,14 @@
 'use client'
 import { useParams, useRouter } from 'next/navigation'
 import { useClientGroup } from '@/lib/hooks/client-groups/use-client-group'
-import { columns } from '@/app/(application)/application/clients/columns'
-import { DataTable } from '@/app/(application)/application/clients/data-table'
 import { Trash2 } from 'lucide-react'
 import { ActionConfirmationDialog } from '@/app/(application)/application/action-confirmation-dialog'
 import * as React from 'react'
 import { useState } from 'react'
 import AddClientForm from '@/app/(application)/application/client-groups/[id]/add-client-form'
 import { useDeleteClientGroup } from '@/lib/hooks/client-groups/use-delete-client-group'
+import { DataTable } from '@/app/(application)/application/client-groups/[id]/data-table'
+import { columns } from '@/app/(application)/application/client-groups/[id]/columns'
 
 export default function ClientGroupById() {
     const router = useParams<{ id: string }>()
