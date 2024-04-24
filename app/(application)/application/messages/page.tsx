@@ -2,10 +2,10 @@
 import { MessageCard } from '@/app/(application)/application/messages/message-card'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { MessageDisplay } from '@/app/(application)/application/messages/message-display'
-import { useMessages } from '@/lib/hooks/queries/use-messages'
+import { useMessages } from '@/lib/hooks/messages/use-messages'
 import { cn } from '@/lib/utils'
 import { useEffect, useState } from 'react'
-import { useMessage } from '@/lib/hooks/queries/use-message'
+import { useMessage } from '@/lib/hooks/messages/use-message'
 
 import { CreateMessageForm } from '@/app/(application)/application/messages/create-message-form'
 

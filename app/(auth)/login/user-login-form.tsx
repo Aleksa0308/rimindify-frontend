@@ -15,7 +15,7 @@ import { Button } from '@/components/ui/button'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { loginSchema } from '@/lib/validation/schemas/login-schema'
-import { useSigninMutation } from '@/lib/hooks/mutations/use-signin-mutation'
+import { useSigninMutation } from '@/lib/hooks/auth/use-signin-mutation'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
