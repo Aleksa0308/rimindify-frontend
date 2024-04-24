@@ -11,17 +11,23 @@ import { MoreHorizontal, Trash2 } from 'lucide-react'
 import { EditClientForm } from '@/app/(application)/application/clients/edit-client-form'
 import { ClientDto } from '@/lib/types/application/clients/client.dto'
 import { Row } from '@tanstack/table-core'
-import { useDeleteClientMutation } from '@/lib/hooks/clients/use-delete-client-mutation'
+import { useRemoveClientFromGroup } from '@/lib/hooks/client-groups/use-remove-client-from-group'
+import {
+    ClientGroupWithClientsDto,
+    ClientsWithGroupId,
+} from '@/lib/types/application/client-groups/client-groups.dto'
 interface RowActionsProps {
-    row: Row<ClientDto>
+    row: Row<ClientsWithGroupId>
 }
 export function RowActions({ row }: RowActionsProps) {
     const client = row.original
-    const [open, setOpen] = useState(false)
-    const deleteMutation = useDeleteClientMutation()
+    const removeMutation = useRemoveClientFromGroup()
 
-    const handleDeleteClient = () => {
-        deleteMutation.mutate(client.clientId)
+    const handleRemoveClient = () => {
+        removeMutation.mutate({
+            clientGroupId: client.clientGroupId,
+            clientId: client.clientId,
+        })
     }
     return (
         <DropdownMenu>
@@ -33,19 +39,13 @@ export function RowActions({ row }: RowActionsProps) {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                <EditClientForm
-                    clientId={client.clientId}
-                    open={open}
-                    dialogOnChange={setOpen}
-                />
-
                 <Button
                     variant={'ghost'}
                     className="w-full flex gap-1 p-2 h-fit items-center justify-start text-destructive"
-                    onClick={() => handleDeleteClient()}
+                    onClick={() => handleRemoveClient()}
                 >
                     <Trash2 className="h-4 w-4" />
-                    Delete
+                    Remove
                 </Button>
             </DropdownMenuContent>
         </DropdownMenu>

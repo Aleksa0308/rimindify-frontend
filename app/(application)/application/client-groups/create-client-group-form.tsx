@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { messageSchema } from '@/lib/validation/schemas/message-schema'
+import { clientSchema } from '@/lib/validation/schemas/client-schema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useCreateMessageMutation } from '@/lib/hooks/messages/use-create-message'
+import { clientGroupSchema } from '@/lib/validation/schemas/client-group-schema'
+import { useCreateClientGroup } from '@/lib/hooks/client-groups/use-create-client-group'
 import { cn } from '@/lib/utils'
 import {
     Dialog,
@@ -26,31 +27,32 @@ import {
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
-interface CreateClientForm extends React.HTMLAttributes<HTMLDivElement> {
+interface CreateClientGroupForm extends React.HTMLAttributes<HTMLDivElement> {
     open: boolean
     dialogOnChange: (open: boolean) => void
 }
 
-export function CreateMessageForm({
+export function CreateClientGroupForm({
     className,
     open,
     dialogOnChange,
-}: CreateClientForm) {
-    const form = useForm<z.infer<typeof messageSchema>>({
-        resolver: zodResolver(messageSchema),
+}: CreateClientGroupForm) {
+    const form = useForm<z.infer<typeof clientGroupSchema>>({
+        resolver: zodResolver(clientGroupSchema),
         defaultValues: {
-            title: '',
-            content: '',
+            name: '',
+            description: '',
         },
         mode: 'onBlur',
     })
 
-    const mutation = useCreateMessageMutation(dialogOnChange)
+    const mutation = useCreateClientGroup(dialogOnChange)
 
-    async function onSubmit(values: z.infer<typeof messageSchema>) {
+    async function onSubmit(values: z.infer<typeof clientGroupSchema>) {
         mutation.mutate(values)
         form.reset()
     }
+
     const handleDialogClick = () => {
         dialogOnChange(!open)
     }
@@ -64,14 +66,15 @@ export function CreateMessageForm({
                         onClick={handleDialogClick}
                         className="w-fit"
                     >
-                        New Message +
+                        Create a Group +
                     </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[560px]">
                     <DialogHeader>
-                        <DialogTitle>New Message</DialogTitle>
+                        <DialogTitle>New Client Group</DialogTitle>
                         <DialogDescription>
-                            Create a message that you can manage later.
+                            Create a empty Client Group that you can manage
+                            later.
                         </DialogDescription>
                     </DialogHeader>
                     <Form {...form}>
@@ -79,16 +82,16 @@ export function CreateMessageForm({
                             <div className="flex flex-col gap-2">
                                 <FormField
                                     control={form.control}
-                                    name="title"
+                                    name="name"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel htmlFor="title">
-                                                Title
+                                            <FormLabel htmlFor="name">
+                                                Name
                                             </FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    id="title"
-                                                    placeholder="Message Title"
+                                                    id="name"
+                                                    placeholder="Group name"
                                                     type="text"
                                                     disabled={
                                                         mutation.isPending
@@ -103,16 +106,16 @@ export function CreateMessageForm({
 
                                 <FormField
                                     control={form.control}
-                                    name="content"
+                                    name="description"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel htmlFor="content">
-                                                Message Content
+                                            <FormLabel htmlFor="description">
+                                                Description
                                             </FormLabel>
                                             <FormControl>
                                                 <Textarea
                                                     rows={6}
-                                                    id="content"
+                                                    id="description"
                                                     disabled={
                                                         mutation.isPending
                                                     }
@@ -124,8 +127,8 @@ export function CreateMessageForm({
                                     )}
                                 />
                                 <p className="text-sm text-muted-foreground">
-                                    The content of the message that will be sent
-                                    to the client.
+                                    The description of the client group for easy
+                                    identification.
                                 </p>
                                 <DialogFooter>
                                     <Button

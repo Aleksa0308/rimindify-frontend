@@ -3,7 +3,7 @@ import { Separator } from '@/components/ui/separator'
 import { ThemeModeToggle } from '@/components/theme-mode-toggle'
 import { Button } from '@/components/ui/button'
 import { LogOutIcon } from 'lucide-react'
-import { useLogout } from '@/lib/hooks/use-logut'
+import { useLogout } from '@/lib/hooks/auth/use-logout'
 
 export function PageTitle() {
     const logout = useLogout()
@@ -24,7 +24,7 @@ export function PageTitle() {
         <>
             <div
                 className={
-                    'px-6 mt-2 font-medium text-lg flex justify-between items-center'
+                    'px-6 h-full font-medium text-lg flex justify-between items-center'
                 }
             >
                 {formattedPathname(pathname)}
@@ -39,7 +39,7 @@ export function PageTitle() {
                     <ThemeModeToggle />
                 </div>
             </div>
-            <Separator className={'mt-4'} />
+            <Separator className={''} />
         </>
     )
 }

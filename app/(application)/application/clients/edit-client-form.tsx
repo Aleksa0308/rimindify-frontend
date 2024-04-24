@@ -33,10 +33,10 @@ import {
 import { CalendarIcon, Pencil } from 'lucide-react'
 import { Calendar } from '@/components/ui/calendar'
 import { PopoverClose } from '@radix-ui/react-popover'
-import { useCreateClientMutation } from '@/lib/hooks/mutations/use-create-client-mutation'
+import { useCreateClientMutation } from '@/lib/hooks/clients/use-create-client-mutation'
 import { useEffect, useState } from 'react'
-import { useClient } from '@/lib/hooks/queries/use-client'
-import { useEditClientMutation } from '@/lib/hooks/mutations/use-edit-client-mutation'
+import { useClient } from '@/lib/hooks/clients/use-client'
+import { useEditClientMutation } from '@/lib/hooks/clients/use-edit-client-mutation'
 
 interface CreateClientForm extends React.HTMLAttributes<HTMLDivElement> {
     open: boolean
