@@ -10,7 +10,7 @@ export function PageTitle() {
     const pathname = usePathname()
     const getLastSegment = (path: string) => {
         const segments = path.split('/')
-        return segments[segments.length - 1]
+        return segments[2]
     }
 
     const formattedPathname = (path: string) => {

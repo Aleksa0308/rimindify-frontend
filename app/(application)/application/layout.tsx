@@ -8,11 +8,11 @@ import {
     UserPlus,
     LayoutDashboard,
 } from 'lucide-react'
-import { SidebarNav } from '@/components/application/sidebar-nav'
+import { SidebarNav } from '@/app/(application)/application/sidebar-nav'
 import Link from 'next/link'
 import { Icons } from '@/components/icons'
 import { Separator } from '@/components/ui/separator'
-import { PageTitle } from '@/components/application/page-title'
+import { PageTitle } from '@/app/(application)/application/page-title'
 import { ScrollArea } from '@/components/ui/scroll-area'
 const actionLinks: NavItem[] = [
     {
@@ -45,7 +45,7 @@ const actionLinks: NavItem[] = [
 const profileLinks: NavItem[] = [
     {
         title: ' My Profile',
-        href: '/application/profile',
+        href: '/application/my-profile',
         icon: User,
     },
 ]
