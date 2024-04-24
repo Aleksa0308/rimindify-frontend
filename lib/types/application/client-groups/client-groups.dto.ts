@@ -9,3 +9,8 @@ export interface ClientGroupDto {
 export interface ClientGroupWithClientsDto extends ClientGroupDto {
     clients: ClientDto[]
 }
+
+export interface CreateClientGroupDto {
+    name: string
+    description?: string
+}

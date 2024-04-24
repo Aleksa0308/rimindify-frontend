@@ -1,5 +1,5 @@
 'use client'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { useClientGroup } from '@/lib/hooks/client-groups/use-client-group'
 import { columns } from '@/app/(application)/application/clients/columns'
 import { DataTable } from '@/app/(application)/application/clients/data-table'
@@ -8,12 +8,15 @@ import { ActionConfirmationDialog } from '@/app/(application)/application/action
 import * as React from 'react'
 import { useState } from 'react'
 import AddClientForm from '@/app/(application)/application/client-groups/[id]/add-client-form'
+import { useDeleteClientGroup } from '@/lib/hooks/client-groups/use-delete-client-group'
 
 export default function ClientGroupById() {
     const router = useParams<{ id: string }>()
+    const navigate = useRouter()
     const clientGroupId = parseInt(router.id)
     const clientGroup = useClientGroup(clientGroupId)
     const [dialogOpen, setDialogOpen] = useState(false)
+    const deleteGroup = useDeleteClientGroup()
     return (
         <section className="container mt-4 flex flex-col gap-2">
             <div className="flex items-center justify-between">
@@ -42,8 +45,8 @@ export default function ClientGroupById() {
                         dialogDescription="Are you sure you want to delete this group?"
                         onAction={(confirmed) => {
                             if (confirmed) {
-                                // delete message
-                                console.log('delete group')
+                                deleteGroup.mutate(clientGroupId)
+                                navigate.push('/application/client-groups')
                             }
                         }}
                         buttonVariant={'destructive'}

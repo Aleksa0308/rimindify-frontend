@@ -2,14 +2,14 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import useAxios from '@/lib/hooks/use-axios'
 import { toast } from 'sonner'
 
-export function useDeleteClientMutation() {
+export function useDeleteClientGroup() {
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: (clientId: number) =>
-            useAxios.delete(`/clients/${clientId}`),
+        mutationFn: (clientGroupId: number) =>
+            useAxios.delete(`/client-groups/${clientGroupId}`),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['clients'] })
-            toast.success('Client deleted successfully')
+            queryClient.invalidateQueries({ queryKey: ['client-groups'] })
+            toast.success('Client Group deleted successfully')
         },
         onError: (error) => {
             toast.error('Failed to delete client')
