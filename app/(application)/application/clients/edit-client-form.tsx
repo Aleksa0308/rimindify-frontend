@@ -65,17 +65,9 @@ export function EditClientForm({
 
     useEffect(() => {
         if (client.isSuccess && client.data) {
-            setFormValues()
+            form.reset(client.data)
         }
     }, [client.isSuccess, client.data])
-
-    const setFormValues = () => {
-        form.setValue('firstName', client.data?.firstName!)
-        form.setValue('lastName', client.data?.lastName!)
-        form.setValue('nickName', client.data?.nickName!)
-        form.setValue('phone', client.data?.phone!)
-        form.setValue('appointment', new Date(client.data?.appointment!))
-    }
 
     const handleDialogClick = () => {
         dialogOnChange(!open)
